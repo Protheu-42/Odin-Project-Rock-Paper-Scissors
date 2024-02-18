@@ -8,12 +8,10 @@ let playerChoose = prompt("Rock, paper or scissors?");
 playerChoose = playerChoose.toLowerCase();
 
 // Check if the answer is one of the three options
-if (playerChoose == "rock" || playerChoose == "paper" || playerChoose == "scissors"){
-    console.log("Very Good");
-}
-else {
+if (playerChoose != "rock" && playerChoose != "paper" && playerChoose != "scissors"){
     console.log("Choose one of the three options!")
 }
+
 
 // Computer input
 let computerChoose = getComputerChoose();
@@ -24,9 +22,8 @@ function getComputerChoose() {
     return options[random];
 };
 
-        // Save the result in a variable
-
 // Function to compare results
+
     // Comparison through simple if or else
     // Return result
 
