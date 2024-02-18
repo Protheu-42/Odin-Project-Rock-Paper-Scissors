@@ -14,7 +14,7 @@ if (playerChoose != "rock" && playerChoose != "paper" && playerChoose != "scisso
 
 
 // Computer input
-let computerChoose = getComputerChoose();
+let computerChoose = "paper";
 
     // Function for the computer choose one of three options
 function getComputerChoose() {
@@ -23,8 +23,34 @@ function getComputerChoose() {
 };
 
 // Function to compare results
+function playRound(playerSelection, computerSelection) {
+    // Rock options
+    if (playerSelection == "rock" && computerSelection == "scissors"){
+        return "You won! Rock beats Scissors";
+    }
+    else if (playerSelection == "rock" && computerSelection == "paper"){
+        return "You lose! Paper beats Rock";
+    }
 
-    // Comparison through simple if or else
-    // Return result
+    // Paper options
+    else if (playerSelection == "paper" && computerSelection == "rock"){
+        return "You won! Paper beats Rock";
+    }
+    else if (playerSelection == "paper" && computerSelection == "scissors"){
+        return "You lose! Scissors beats Paper";
+    }
 
-// Display the winner
+    // Scissors options
+    else if (playerSelection == "scissors" && computerSelection == "paper"){
+        return "You won! Scissors beats Paper";
+    }
+    else if (playerSelection == "scissors" && computerSelection == "rock"){
+        return "You lose! Rock beats Scissors";
+    }
+
+    else {
+        return "Too bad! its a tie"
+    }
+
+}
+console.log(playRound(playerChoose, computerChoose));
