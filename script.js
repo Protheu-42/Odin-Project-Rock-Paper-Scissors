@@ -61,3 +61,10 @@ function playRound(playerSelection, computerSelection) {
     }
 
 }
+
+// Here down is the for HTML interactivity
+
+// Select and addEventListeners to all buttons to be able to playRound
+const buttons = document.querySelectorAll("button");
+
+buttons.forEach((button) => button.addEventListener("click", () => playRound(button.id, getComputerSelection())));
