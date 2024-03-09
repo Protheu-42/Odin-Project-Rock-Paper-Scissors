@@ -1,23 +1,31 @@
 // Create variable to hold all choices
 const options = ["rock", "paper", "scissors"];
 
-// Player input
-let playerChoose = prompt("Rock, paper or scissors?");
 
-// Put input to lowercase
-playerChoose = playerChoose.toLowerCase();
+// Function to collect player and computer choose
+function getPlayerSelection() {
+    // Player input
+    let playerChoose = prompt("Rock, paper or scissors?");
+    // Put input to lowercase
+    playerChoose = playerChoose.toLowerCase();
+    if (checkPlayerTypo(playerChoose) == false){
+        return false;
+    }
 
-// Check if the answer is one of the three options
-if (playerChoose != "rock" && playerChoose != "paper" && playerChoose != "scissors"){
-    console.log("Choose one of the three options!")
+    //return values
+    return playerChoose;
 }
 
+// Check if the answer is one of the three options
+function checkPlayerTypo(playerChoose) {
+    if (playerChoose != "rock" && playerChoose != "paper" && playerChoose != "scissors"){
+        console.log("Choose one Rock, paper or scissors!");
+        return false;
+    }
+}
 
-// Computer input
-let computerChoose = "paper";
-
-    // Function for the computer choose one of three options
-function getComputerChoose() {
+// Function for the computer choose one of three options
+function getComputerSelection() {
     const random = Math.floor(Math.random() * options.length);
     return options[random];
 };
@@ -47,10 +55,33 @@ function playRound(playerSelection, computerSelection) {
     else if (playerSelection == "scissors" && computerSelection == "rock"){
         return "You lose! Rock beats Scissors";
     }
-
+    // It's a Tie
     else {
         return "Too bad! its a tie"
     }
 
 }
-console.log(playRound(playerChoose, computerChoose));
+function PlayGame() {
+    // Creating score variables
+    let playerScore = 0,
+    computerScore = 0;
+    
+    for (let i = 0; i < 5; i++){
+        // Get inputs from player and computer
+        let playerSelection = getPlayerSelection(),
+        computerSelection = getComputerSelection();
+
+        // play a round
+        result = playRound(playerSelection, computerSelection);
+        console.log(result);
+        
+        // Score points
+        if (result.includes("You won!")) {
+            playerScore++;
+        }
+        else if (result.includes("You lose!")){
+            computerScore++;
+        }
+        console.log("Player Score:" + playerScore + " Computer Score:" + computerScore)
+    }
+}
