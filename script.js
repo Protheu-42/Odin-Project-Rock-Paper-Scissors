@@ -61,27 +61,3 @@ function playRound(playerSelection, computerSelection) {
     }
 
 }
-function PlayGame() {
-    // Creating score variables
-    let playerScore = 0,
-    computerScore = 0;
-    
-    for (let i = 0; i < 5; i++){
-        // Get inputs from player and computer
-        let playerSelection = getPlayerSelection(),
-        computerSelection = getComputerSelection();
-
-        // play a round
-        result = playRound(playerSelection, computerSelection);
-        console.log(result);
-        
-        // Score points
-        if (result.includes("You won!")) {
-            playerScore++;
-        }
-        else if (result.includes("You lose!")){
-            computerScore++;
-        }
-        console.log("Player Score:" + playerScore + " Computer Score:" + computerScore)
-    }
-}
