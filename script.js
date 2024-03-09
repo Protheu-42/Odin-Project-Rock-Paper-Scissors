@@ -1,5 +1,7 @@
-// Create variable to hold all choices
+// Create variable to hold all choices and Scores
 const options = ["rock", "paper", "scissors"];
+let playerScore = 0;
+let computerScore = 0;
 
 
 // Function to collect player and computer choose
@@ -30,36 +32,46 @@ function getComputerSelection() {
     return options[random];
 };
 
+// Function to get Score
+function getScore(){
+    return `Your Score is ${playerScore}, Computer Score is ${computerScore}`
+}
+
 // Function to compare results
 function playRound(playerSelection, computerSelection) {
     // Rock options
     if (playerSelection == "rock" && computerSelection == "scissors"){
-        return "You won! Rock beats Scissors";
+        playerScore++;
+        return log.innerText = `You won! Rock beats Scissors \n ${getScore()}`;
     }
     else if (playerSelection == "rock" && computerSelection == "paper"){
-        return "You lose! Paper beats Rock";
+        computerScore++;
+        return log.innerText = `You lose! Paper beats Rock \n ${getScore()}`
     }
 
     // Paper options
     else if (playerSelection == "paper" && computerSelection == "rock"){
-        return "You won! Paper beats Rock";
+        playerScore++;
+        return log.innerText = `You won! Paper beats Rock \n ${getScore()}`
     }
     else if (playerSelection == "paper" && computerSelection == "scissors"){
-        return "You lose! Scissors beats Paper";
+        computerScore++;
+        return log.innerText = `You lose! Scissors beats Paper \n ${getScore()}`;
     }
 
     // Scissors options
     else if (playerSelection == "scissors" && computerSelection == "paper"){
-        return "You won! Scissors beats Paper";
+        playerScore++;
+        return log.innerText = `You won! Scissors beats Paper \n ${getScore()}`;
     }
     else if (playerSelection == "scissors" && computerSelection == "rock"){
-        return "You lose! Rock beats Scissors";
+        computerScore++;
+        return log.innerText = `You lose! Rock beats Scissors \n ${getScore()}`;
     }
     // It's a Tie
     else {
-        return "Too bad! its a tie"
+        return log.innerText = `Too bad! its a tie \n ${getScore()}`;
     }
-
 }
 
 // Here down is the for HTML interactivity
@@ -68,3 +80,7 @@ function playRound(playerSelection, computerSelection) {
 const buttons = document.querySelectorAll("button");
 
 buttons.forEach((button) => button.addEventListener("click", () => playRound(button.id, getComputerSelection())));
+
+// Log Div and Game wise
+const log = document.querySelector("#log");
+
