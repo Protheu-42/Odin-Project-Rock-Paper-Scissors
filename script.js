@@ -34,7 +34,21 @@ function getComputerSelection() {
 
 // Function to get Score
 function getScore(){
-    return `Your Score is ${playerScore}, Computer Score is ${computerScore}`
+    return `Your Score is ${playerScore}, Computer Score is ${computerScore}`;
+}
+
+// Function check for a winner
+function checkWinner(){
+    if (playerScore == 5){
+        playerScore = 0;
+        computerScore = 0;
+        return log.textContent = "Congratulations you win!";
+    } else if (computerScore == 5){
+        playerScore = 0;
+        computerScore = 0;
+        return log.textContent = "Too bad, you lose!";
+    }
+    return getScore();
 }
 
 // Function to compare results
@@ -42,35 +56,35 @@ function playRound(playerSelection, computerSelection) {
     // Rock options
     if (playerSelection == "rock" && computerSelection == "scissors"){
         playerScore++;
-        return log.innerText = `You won! Rock beats Scissors \n ${getScore()}`;
+        return log.innerText = `You won! Rock beats Scissors \n ${checkWinner()}`;
     }
     else if (playerSelection == "rock" && computerSelection == "paper"){
         computerScore++;
-        return log.innerText = `You lose! Paper beats Rock \n ${getScore()}`
+        return log.innerText = `You lose! Paper beats Rock \n ${checkWinner()}`
     }
 
     // Paper options
     else if (playerSelection == "paper" && computerSelection == "rock"){
         playerScore++;
-        return log.innerText = `You won! Paper beats Rock \n ${getScore()}`
+        return log.innerText = `You won! Paper beats Rock \n ${checkWinner()}`
     }
     else if (playerSelection == "paper" && computerSelection == "scissors"){
         computerScore++;
-        return log.innerText = `You lose! Scissors beats Paper \n ${getScore()}`;
+        return log.innerText = `You lose! Scissors beats Paper \n ${checkWinner()}`;
     }
 
     // Scissors options
     else if (playerSelection == "scissors" && computerSelection == "paper"){
         playerScore++;
-        return log.innerText = `You won! Scissors beats Paper \n ${getScore()}`;
+        return log.innerText = `You won! Scissors beats Paper \n ${checkWinner()}`;
     }
     else if (playerSelection == "scissors" && computerSelection == "rock"){
         computerScore++;
-        return log.innerText = `You lose! Rock beats Scissors \n ${getScore()}`;
+        return log.innerText = `You lose! Rock beats Scissors \n ${checkWinner()}`;
     }
     // It's a Tie
     else {
-        return log.innerText = `Too bad! its a tie \n ${getScore()}`;
+        return log.innerText = `Too bad! its a tie \n ${checkWinner()}`;
     }
 }
 
